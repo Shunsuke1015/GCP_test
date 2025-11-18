@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dialogflow Messenger Fullscreen</title>
+
+    <!-- スマホ向け -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Dialogflow Messenger Stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css"
+    />
+
+    <!-- Dialogflow Messenger Script -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* df-messenger を画面全体で固定表示 */
+      df-messenger {
+        position: fixed !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        margin: 0;
+        border-radius: 0 !important;
+
+        --df-messenger-chat-background: #ffffff;
+        --df-messenger-message-user-background: #d3e3fd;
+        --df-messenger-message-bot-background: #ffffff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <df-messenger
+      id="df"
+      project-id="mysecondpjfortest"
+      agent-id="0a6fdddf-3f05-4fd6-b8de-33afd4deb7f4"
+      language-code="ja"
+      max-query-length="-1"
+    >
+      <df-messenger-chat
+        chat-title="LenovoTest"
+        placeholder-text="メッセージを入力してください"
+      >
+      </df-messenger-chat>
+    </df-messenger>
+
+    <!-- チャットを即時開く -->
+    <script>
+      window.addEventListener("load", () => {
+        const df = document.querySelector("df-messenger");
+        // fully-expandedをセットするとフルスクリーンに切り替わる
+        df.setAttribute("fully-expanded", "true");
+      });
+    </script>
+  </body>
+</html>
